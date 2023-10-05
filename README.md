@@ -2,7 +2,7 @@
 
 **Music Application Using Spring boot & Angular**
 
-**Introduction**
+### **Introduction**
 
 The Spotify-like-Music Library System is a project which is to develop a
 music application.
@@ -13,7 +13,7 @@ The Spotify-like Music Library System follows a client-server
 architecture. The backend is built using Spring Boot, providing RESTful
 APIs, while the frontend is developed using Angular.
 
-**Features**
+### **Features**
 
 **Homepage**: The homepage displays all the content such as songs,
 playlists, categories etc.
@@ -35,7 +35,7 @@ displayed as a list.
 
 **Categories**: Songs will be categorized into different categories.
 
-**The Flow of Project**
+### **The Flow of Project**
 
 -   The user will enter the local host URL in the webpage and redirects
     to the login page.
