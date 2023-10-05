@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class SongService {
   playlist = { id: 1, name: 'My Playlist', songs: [] };
 
+ 
   addToPlaylist(song: any) {
     // // Check if the song is already in the playlist
     // const isSongInPlaylist = this.playlist.songs.some(s => s.id === song.id);
@@ -19,5 +20,7 @@ export class SongService {
     //   console.warn('Song is already in the playlist.');
     // }
   }
+
+
 }
 

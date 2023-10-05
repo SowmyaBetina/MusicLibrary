@@ -11,7 +11,7 @@ import { YourPlaylistComponent } from './your-playlist/your-playlist.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: '',redirectTo : '/home',pathMatch : 'full'},
+  //{ path: '',redirectTo : '/home',pathMatch : 'full'},
   { path: 'song-list', component: SongListComponent },
   { path: 'search', component: SearchComponent }, // Create a SearchComponent
   { path: 'recent', component: RecentComponent }, // Create a RecentComponent

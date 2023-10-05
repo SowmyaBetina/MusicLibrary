@@ -1,10 +1,13 @@
 package com.library.music.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +27,7 @@ import com.library.music.service.RecentSongService;
 import com.library.music.service.SongService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/music")
 public class MusicController {
 
@@ -40,21 +44,22 @@ public class MusicController {
     private SongRepository songRepository;
     @Autowired
     private RecentSongService recentSongService;
-    
 
     // Search for songs by name
     @GetMapping("/songs")
     public List<Song> searchSongsByName(@RequestParam(name = "name") String name) {
         return songService.searchSongsByName(name);
     }
-//    @GetMapping("/songs/all")
-//    public List<Song> getAllSongsWithCategory() {
-//        return songRepository.findAllSongsWithCategory();
-//    }
+
+    // @GetMapping("/songs/all")
+    // public List<Song> getAllSongsWithCategory() {
+    // return songRepository.findAllSongsWithCategory();
+    // }
     @GetMapping("/songs/all")
     public List<Song> getAllSongsWithAlbumAndCategory() {
         return songRepository.findAll();
     }
+
     // Search for songs by artist
     @GetMapping("/songs/artist")
     public List<Song> searchSongsByArtist(@RequestParam(name = "artist") String artist) {
@@ -66,8 +71,6 @@ public class MusicController {
     public void likeSong(@PathVariable Long songId) {
         songService.likeSong(songId);
     }
-
-   
 
     // Retrieve all categories
     @GetMapping("/categories")
@@ -84,9 +87,8 @@ public class MusicController {
     // Add a song to a playlist
     @PostMapping("/playlists/{playlistId}/add-song/{songId}")
     public void addSongToPlaylist(
-        @PathVariable Long playlistId,
-        @PathVariable Long songId
-    ) {
+            @PathVariable Long playlistId,
+            @PathVariable Long songId) {
         playlistService.addSongToPlaylist(playlistId, songId);
     }
 
@@ -100,6 +102,7 @@ public class MusicController {
     public List<Song> getSongsByCategory(@PathVariable String categoryname) {
         return songRepository.findByCategoryName(categoryname);
     }
+
     @PostMapping("/recents/add")
     public ResponseEntity<String> addSongToRecents(@RequestBody Song song) {
         recentSongService.addRecentSong(song);
@@ -111,9 +114,20 @@ public class MusicController {
         List<Song> recentSongs = recentSongService.getRecentSongs();
         return recentSongs;
     }
+
     @GetMapping("songs/{albumid}/all")
     public List<Song> getAllSongsByAlbumid(@PathVariable Long albumid) {
         return songService.getSongsByAlbumid(albumid);
+    }
+
+    @GetMapping("/home")
+    public Set<String> getAllAlbums() {
+        List<Song> songs = songService.getAllSongs();
+        Set<String> albumNames = new HashSet<>();
+        for (Song song : songs) {
+            albumNames.add(song.getAlbum());
+        }
+        return albumNames;
     }
 
 }
