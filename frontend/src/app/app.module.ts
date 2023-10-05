@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,7 @@ import { SearchComponent } from './search/search.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SongListComponent } from './song-list/song-list.component';
 import { YourPlaylistComponent } from './your-playlist/your-playlist.component';
-import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     CategoriesComponent,
     FavoritesComponent,
     YourPlaylistComponent,
-    SongListComponent
+    SongListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

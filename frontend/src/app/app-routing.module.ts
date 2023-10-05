@@ -7,11 +7,13 @@ import { RecentComponent } from './recent/recent.component';
 import { SearchComponent } from './search/search.component';
 import { SongListComponent } from './song-list/song-list.component';
 import { YourPlaylistComponent } from './your-playlist/your-playlist.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   //{ path: '',redirectTo : '/home',pathMatch : 'full'},
+  { path: 'login', component: LoginComponent },
   { path: 'song-list', component: SongListComponent },
   { path: 'search', component: SearchComponent }, // Create a SearchComponent
   { path: 'recent', component: RecentComponent }, // Create a RecentComponent
